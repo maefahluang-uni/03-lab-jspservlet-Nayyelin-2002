@@ -72,16 +72,50 @@ public class TestBMICalculatorIT {
     public void testCaclulate3() {
 
         // Make a HTTP GET request to retrieve the last created Parolee.
-        try (Response response = client.target(WEB_URI+"?weight=65&height=1.8").request().get()) {
+        try (Response response = client.target(WEB_URI+"?weight=50&height=1.7").request().get()) {
 
             // Check that the HTTP response code is 200 OK.
             int responseCode = response.getStatus();
             assertEquals(200, responseCode);
 
             String jsonResponse = response.readEntity(String.class);
-            assertThat(jsonResponse, CoreMatchers.containsString("Result is 20"));
+            assertThat(jsonResponse, CoreMatchers.containsString("Result is 17"));
 
-            assertThat(jsonResponse, CoreMatchers.containsString("normal"));
+            assertThat(jsonResponse, CoreMatchers.containsString("Underweight"));
+            _logger.info("IT1 test passed");
+        }
+    }
+     @Test
+    public void testCaclulate4() {
+
+        // Make a HTTP GET request to retrieve the last created Parolee.
+        try (Response response = client.target(WEB_URI+"?weight=73&height=1.7").request().get()) {
+
+            // Check that the HTTP response code is 200 OK.
+            int responseCode = response.getStatus();
+            assertEquals(200, responseCode);
+
+            String jsonResponse = response.readEntity(String.class);
+            assertThat(jsonResponse, CoreMatchers.containsString("Result is 25"));
+
+            assertThat(jsonResponse, CoreMatchers.containsString("overweight"));
+            _logger.info("IT1 test passed");
+        }
+    }
+    @Test
+        public void testCaclulate5() {
+
+        // Make a HTTP GET request to retrieve the last created Parolee.
+        try (Response response = client.target(WEB_URI+"?weight=110&height=1.7").request().get()) {
+
+            // Check that the HTTP response code is 200 OK.
+            int responseCode = response.getStatus();
+            assertEquals(200, responseCode);
+
+            String jsonResponse = response.readEntity(String.class);
+            assertThat(jsonResponse, CoreMatchers.containsString("Result is 38"));
+
+            assertThat(jsonResponse, CoreMatchers.containsString("extermely obese"));
             _logger.info("IT1 test passed");
         }
     }
