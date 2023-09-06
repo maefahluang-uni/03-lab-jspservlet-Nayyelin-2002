@@ -29,7 +29,7 @@ You may study `testCaclulate1` as a sample. This test case should make a connect
 
 What benefit do we have from having integration tests in our project?
 ```
-Your though here
+Integration tests help ensure that the various components of our Java project works harmoniously together and that the system behaves as expected in a real-world context.
 ```
 
 
